@@ -95,8 +95,24 @@ window.addEventListener('DOMContentLoaded', () => {
       quizWrap.innerHTML = quizDisplay;
     });
     
-  };
+    
+    timedText();
+    function timedText() {
+      let x = document.getElementById("time");
+      let counter = 10;
+      const timer = setInterval(function(){
+           // console.log(counter);
+            counter--
+            x.innerText = `${counter} seconds`;
+            if (counter === 0) {
+              
+              clearInterval(timer);
+              submit.click();
+            }
+      }, 1000);
 
+  };
+  }
   // Calculate the score
   const calculateScore = () => {
     let score = 0;
