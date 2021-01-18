@@ -27,9 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
     timedText();
+    let counter = 60;
     function timedText() {
       let x = document.getElementById("time");
-      let counter = 60;
+      
       const timer = setInterval(function(){
            // console.log(counter);
             counter--
@@ -153,7 +154,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //on submit button click
   const submit = document.getElementById('btnSubmit');
   submit.addEventListener('click', () => {
-       
+        counter = 0;
         let finalScore = calculateScore();
         submit.style.display ='none';
         const scoreDisp = document.getElementById('score');
