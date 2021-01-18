@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
     timedText();
     function timedText() {
       let x = document.getElementById("time");
-      let counter = 10;
+      let counter = 60;
       const timer = setInterval(function(){
            // console.log(counter);
             counter--
