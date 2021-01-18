@@ -131,7 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
         submit.style.display ='none';
         const scoreDisp = document.getElementById('score');
         scoreDisp.innerHTML = `<div class="p-5" style="background-color: #f4f4f4;"><p>Your score is ${finalScore}</p>
-        <p class="badge ${finalScore > 4 ? 'badge-success' : 'badge-warning'}">${finalScore > 2 ? 'You won' : 'Try again'}</p></div>`;
+        <p class="badge ${finalScore > 4 ? 'badge-success' : 'badge-warning'}">${finalScore > 4 ? 'You won' : 'Try again'}</p></div>`;
   });
 
   //on reset button click
