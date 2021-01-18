@@ -20,20 +20,30 @@
 *************************** */
 
 window.addEventListener('DOMContentLoaded', () => {
+  let quizOver;
   const start = document.querySelector('#start');
   start.addEventListener('click', function (e) {
     //console.log(e);
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
-    // function timedText() {
-    //   let x = document.getElementById("time");
-    //   console.log(x);
-    //   for( let i=60;i >=0; i--){
-    //     console.log(i);
-    //     setTimeout(function(){  x.innerText = `${i} seconds`;}, 3000);
-    //   }
-    // }
-    // timedText();
+    timedText();
+    function timedText() {
+      let x = document.getElementById("time");
+      let counter = 10;
+      const timer = setInterval(function(){
+           // console.log(counter);
+            counter--
+            x.innerText = `${counter} seconds`;
+            if (counter === 0) {
+              
+              clearInterval(timer);
+              submit.click();
+            }
+      }, 1000);
+    
+    }
+    timedText();
+    
   });
 
  
@@ -84,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div>&nbsp;</div>`;
       quizWrap.innerHTML = quizDisplay;
     });
-    //timedText();
+    
   };
 
   // Calculate the score
@@ -123,6 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // call the displayQuiz function
   displayQuiz();
  
+ 
   //on submit button click
   const submit = document.getElementById('btnSubmit');
   submit.addEventListener('click', () => {
@@ -131,7 +142,7 @@ window.addEventListener('DOMContentLoaded', () => {
         submit.style.display ='none';
         const scoreDisp = document.getElementById('score');
         scoreDisp.innerHTML = `<div class="p-5" style="background-color: #f4f4f4;"><p>Your score is ${finalScore}</p>
-        <p class="badge ${finalScore > 4 ? 'badge-success' : 'badge-warning'}">${finalScore > 2 ? 'You won' : 'Try again'}</p></div>`;
+        <p class="badge ${finalScore > 4 ? 'badge-success' : 'badge-warning'}">${finalScore > 4 ? 'You won' : 'Try again'}</p></div>`;
   });
 
   //on reset button click
