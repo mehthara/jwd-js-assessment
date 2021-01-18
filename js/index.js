@@ -20,22 +20,26 @@
 *************************** */
 
 window.addEventListener('DOMContentLoaded', () => {
-  let quizOver;
+  let quizOver = 0;
   const start = document.querySelector('#start');
   start.addEventListener('click', function (e) {
     //console.log(e);
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
-    timedText();
-    let counter = 60;
+    
+    
     function timedText() {
+      console.log('timed text started here');
       let x = document.getElementById("time");
-      
+      let counter = 60;
       const timer = setInterval(function(){
-           // console.log(counter);
-            counter--
+
+           console.log('setInterval logged ');
+           //console.log(counter);
+            counter--;
             x.innerText = `${counter} seconds`;
-            if (counter === 0) {
+            console.log('inside setTimer quizover->' +quizOver);
+            if (counter === 0 || quizOver === 1) {
               
               clearInterval(timer);
               submit.click();
@@ -97,23 +101,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     
     
-    timedText();
-    function timedText() {
-      let x = document.getElementById("time");
-      let counter = 10;
-      const timer = setInterval(function(){
-           // console.log(counter);
-            counter--
-            x.innerText = `${counter} seconds`;
-            if (counter === 0) {
-              
-              clearInterval(timer);
-              submit.click();
-            }
-      }, 1000);
 
+    
   };
-  }
+
   // Calculate the score
   const calculateScore = () => {
     let score = 0;
@@ -154,7 +145,9 @@ window.addEventListener('DOMContentLoaded', () => {
   //on submit button click
   const submit = document.getElementById('btnSubmit');
   submit.addEventListener('click', () => {
-        counter = 0;
+       //clearInterval(timer);
+        quizOver = 1;
+        console.log('submit button clicked '+quizOver);
         let finalScore = calculateScore();
         submit.style.display ='none';
         const scoreDisp = document.getElementById('score');
